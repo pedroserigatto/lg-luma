@@ -833,8 +833,8 @@ failure retries after five minutes. Unit changes convert unrounded cached Celsiu
 Removing a city clears its cache. The `.weather.json` sidecar uses Unix-seconds timestamps.
 Mock servers accept only literal loopback HTTP origins and are refused in TV builds.
 
-`assets/messages.json` supplies Dutch, English, French, German, Italian, Polish, Portuguese (Brazil),
-Russian, Simplified Chinese, Spanish, Swedish, Traditional Chinese and Vietnamese, including locale formatting
+`assets/messages.json` supplies English and Portuguese (Brazil), the two languages this fork keeps
+(a saved preference for any other language loads as English), including locale formatting
 and weather labels. App/device names and saved city names remain real data. No geolocation,
 runtime font/translation services or telemetry are used. Weather attribution: Open-Meteo,
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
@@ -897,7 +897,7 @@ prerelease than the pinned `.5` library, not a full Luma compatibility guarantee
 
 Rust behavior tests cover navigation, preferences, localization, rendering geometry and weather
 state without a TV. `tests/` scripts exercise actual desktop framebuffers and mock HTTP responses
-for navigation, persistence, pointer input, translations/CJK, weather limits/cache/races and
+for navigation, persistence, pointer input, translations, weather limits/cache/races and
 profiling. They contact no live weather APIs or television. On Linux:
 
 ```sh

@@ -1636,9 +1636,9 @@ fn language_selection_restores_its_parent_and_is_saved_with_preferences() {
         state.focus,
         Target::Choice(crate::i18n::Language::En.index())
     );
-    state.direction(Direction::Up, &controls(&state));
+    state.direction(Direction::Down, &controls(&state));
     assert_eq!(state.activate(), vec![Effect::Save]);
-    assert_eq!(state.preferences.language, crate::i18n::Language::De);
+    assert_eq!(state.preferences.language, crate::i18n::Language::Pt);
     assert_eq!(state.focus, Target::Setting(4));
     state.activate();
     state.direction(Direction::Left, &controls(&state));
@@ -2554,6 +2554,10 @@ fn settings_lists_keep_bottom_padding_for_remote_and_wheel_scrolling() {
             .unwrap()
             .rect;
         assert!(rect.y + rect.h <= bottom + 0.01);
+        if !backgrounds {
+            // Two languages (English, Portuguese) never fill the list, so there is nothing to scroll.
+            continue;
+        }
         state.wheel_scroll(&controls(&state), Some((1000., 600.)), 0, -1000);
         let rect = controls(&state)
             .into_iter()
