@@ -2554,6 +2554,10 @@ fn settings_lists_keep_bottom_padding_for_remote_and_wheel_scrolling() {
             .unwrap()
             .rect;
         assert!(rect.y + rect.h <= bottom + 0.01);
+        if !backgrounds {
+            // Two languages (English, Portuguese) never fill the list, so there is nothing to scroll.
+            continue;
+        }
         state.wheel_scroll(&controls(&state), Some((1000., 600.)), 0, -1000);
         let rect = controls(&state)
             .into_iter()

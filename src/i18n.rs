@@ -196,7 +196,6 @@ mod tests {
         assert_eq!(preferences.language, super::Language::Pt);
     }
 
-
     #[test]
     fn homebrew_description_lists_every_supported_language() {
         let description = include_str!("../assets/homebrew-description.html");
@@ -284,6 +283,4 @@ mod tests {
             assert_eq!(Language::Pt.date(now), expected);
         }
     }
-
-
 }
